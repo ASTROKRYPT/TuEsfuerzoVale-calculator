@@ -1,4 +1,4 @@
-# 📊 Calculadora de Salario Justo con IPC
+#  Calculadora de Salario Justo con IPC
 
 Esta calculadora web permite estimar cuál debería ser el salario justo de una persona teniendo en cuenta:
 
@@ -10,7 +10,7 @@ Es útil para trabajadores, sindicatos, representantes laborales y cualquier per
 
 ---
 
-## 🛠 ¿Cómo funciona?
+##  ¿Cómo funciona?
 
 La calculadora compara el escenario base (año anterior) con el escenario actual, y calcula:
 
@@ -21,7 +21,7 @@ La calculadora compara el escenario base (año anterior) con el escenario actual
 
 ---
 
-## ✏️ ¿Qué datos se ingresan?
+##  ¿Qué datos se ingresan?
 
 - Toneladas movidas en el año base
 - Personas implicadas en el año base
@@ -33,7 +33,7 @@ La calculadora compara el escenario base (año anterior) con el escenario actual
 
 ---
 
-## ✅ Resultado
+##  Resultado
 
 La herramienta muestra:
 
@@ -43,7 +43,7 @@ La herramienta muestra:
 
 ---
 
-## 🚀 ¿Cómo usarla?
+##  ¿Cómo usarla?
 
 1. Abre el archivo `calculadora.html` en tu navegador.
 2. Ingresa los valores conocidos.
@@ -52,13 +52,6 @@ La herramienta muestra:
 
 ---
 
-## 📤 Compartir
-
-Puedes subir esta calculadora a servicios gratuitos como:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Netlify](https://www.netlify.com/)
-- [Vercel](https://vercel.com/)
 
 Y compartir el enlace en Telegram u otras plataformas.
 
