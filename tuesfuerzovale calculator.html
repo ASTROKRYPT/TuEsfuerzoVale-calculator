@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Salario Justo con IPC</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 30px auto; padding: 20px; background: #f4f4f4; border-radius: 8px; }
+    label { font-weight: bold; display: block; margin-top: 15px; }
+    input { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+    #resultado { margin-top: 30px; font-size: 18px; background: #fff; padding: 15px; border-radius: 8px; }
+    .intro { background: #fff; padding: 15px; border-radius: 8px; font-size: 15px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Calculadora de Salario Justo con IPC</h2>
+
+  <div class="intro">
+    <p>Esta calculadora te ayuda a estimar el salario justo que debería recibir una persona, considerando:</p>
+    <ul>
+      <li>El aumento o disminución de la carga de trabajo (toneladas por persona).</li>
+      <li>El efecto de la inflación (IPC acumulado).</li>
+    </ul>
+    <p>Introduce los datos del año base y del año actual, así como el salario que se está recibiendo hoy. El sistema calculará cuánto deberías estar cobrando y te indicará si hay pérdida o ganancia de poder adquisitivo.</p>
+  </div>
+
+  <label>Toneladas Año Base:</label>
+  <input type="number" id="tBase" placeholder="Ej: 10">
+
+  <label>Personas Año Base:</label>
+  <input type="number" id="pBase" placeholder="Ej: 3">
+
+  <label>Salario por Persona Año Base (€):</label>
+  <input type="number" id="cBase" placeholder="Ej: 30">
+
+  <label>Toneladas Año Actual:</label>
+  <input type="number" id="tActual" placeholder="Ej: 15">
+
+  <label>Personas Año Actual:</label>
+  <input type="number" id="pActual" placeholder="Ej: 2">
+
+  <label>IPC Acumulado (%):</label>
+  <input type="number" id="ipc" placeholder="Ej: 12">
+
+  <label>Salario Actual Recibido (€):</label>
+  <input type="number" id="cActual" placeholder="Ej: 67.5">
+
+  <button onclick="calcular()">Calcular</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcular() {
+      const T0 = parseFloat(document.getElementById('tBase').value);
+      const P0 = parseFloat(document.getElementById('pBase').value);
+      const C0 = parseFloat(document.getElementById('cBase').value);
+      const T = parseFloat(document.getElementById('tActual').value);
+      const P = parseFloat(document.getElementById('pActual').value);
+      const ipc = parseFloat(document.getElementById('ipc').value) / 100;
+      const salarioActual = parseFloat(document.getElementById('cActual').value);
+
+      const prodBase = T0 / P0;
+      const prodActual = T / P;
+      const factorProd = prodActual / prodBase;
+      const salarioJusto = C0 * factorProd * (1 + ipc);
+      const diferencia = salarioJusto - salarioActual;
+
+      let mensaje = `
+        <b>Salario Justo Actual: €${salarioJusto.toFixed(2)}</b><br>
+        Salario Actual Recibido: €${salarioActual.toFixed(2)}<br>
+        Diferencia: €${diferencia.toFixed(2)}<br>
+      `;
+
+      if (diferencia > 0) {
+        mensaje += "<span style='color:red;'>💸 Hay pérdida de poder adquisitivo.</span>";
+      } else if (diferencia < 0) {
+        mensaje += "<span style='color:green;'>✅ Se ha ganado poder adquisitivo.</span>";
+      } else {
+        mensaje += "<span style='color:blue;'>🔹 El salario está exactamente ajustado.</span>";
+      }
+
+      document.getElementById('resultado').innerHTML = mensaje;
+    }
+  </script>
+</body>
+</html>
+
